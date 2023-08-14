@@ -16,7 +16,7 @@ class Item extends Model
 
     public static $rules    = [
         'item_name'             => 'required|max:255',
-        'volume'                => 'required|numeric|min:0|max:1000000',
+        'volume'                => 'required',
         'category_id'           => 'required|exists:categories,id',
         'unit_id'               => 'required|exists:units,id',
         'brand_id'              => 'required|exists:brands,id',

@@ -1,3 +1,4 @@
+@if(auth()->user())
 <div class="header">
 
    <div class="header-left active">
@@ -37,7 +38,7 @@
                                                      document.getElementById('logout-form').submit();">
                                         
                                     
-                  <img src="https://dreamspos.dreamguystech.com/html/template/assets/img/icons/log-out.svg" class="me-2" alt="img">{{ __('Logout') }}
+                  <img src="https://dreamspos.dreamguystech.com/html/template/assets/img/icons/log-out.svg" class="me-2" alt="img">Hi {{ auth()->user()->name }} {{ __('Logout') }}
                </a>
                
          <!-- <a href="javascript:void(0);" class="dropdown-toggle nav-link userset" data-bs-toggle="dropdown">
@@ -82,3 +83,6 @@
 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
     @csrf
 </form>
+@else
+<script>window.location = {{ public_path(); }}."/home";</script>
+@endif

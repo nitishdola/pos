@@ -14,8 +14,9 @@ class PurchaseController extends Controller
     public function create() {
         $items = Item::query()
             ->join('brands', 'items.brand_id', '=', 'brands.id')
+            ->join('units', 'items.unit_id', '=', 'units.id')
             ->select([
-                DB::raw("CONCAT(brands.name, ' - ', items.item_name) as i_name, items.id as item_id"),
+                DB::raw("CONCAT(brands.name, ' - ', items.item_name, ' ', items.volume, ' ',units.name) as i_name, items.id as item_id"),
             ])
             ->where('items.deleted_at', null)
             ->pluck('i_name', 'item_id');
