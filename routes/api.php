@@ -15,6 +15,10 @@ use App\Http\Controllers\REST\APIController;
 */
 
 Route::get('/get-hsn-details', [APIController::class, 'getHsnDetails'])->name('get_hsn_details');
+Route::get('/get-all-purchase-details', [APIController::class, 'getAllPurchaseDetails'])->name('get_all_purchase_details');
+Route::get('/get-purchase-item-details', [APIController::class, 'getPurchaseItemDetails'])->name('get_purchase_item_details');
+
+
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();

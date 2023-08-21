@@ -165,10 +165,6 @@
 	$('.z_datetimepickerym').Zebra_DatePicker({
 		format: 'm-Y'
 	});
-
-	
- 
- 
  	$(document).on('change', '.hsn_master_id', function() {
  		console.log('kjjj');
  		let hsn_master_id = $(this).val();
@@ -223,8 +219,6 @@
 			format: 'm-Y'
 		});
 
-
-
 		$clone.find('.quantity').val('');
 		$clone.find('.manufacturing_date').val('');
 		$clone.find('.expiry_date').val('');
@@ -241,6 +235,8 @@
 	    
 	    
 	});
+
+	
  </script>
 @stop
 
