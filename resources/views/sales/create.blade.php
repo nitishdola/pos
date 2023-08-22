@@ -42,7 +42,7 @@
 		         <div class="col-lg-4 col-sm-6 col-12">
 		            <div class="form-group">
 		               <label>District</label>
-		               {!! Form::text('consignee_district', null, ['class' => '', 'id' => 'consignee_district',  'autocomplete' => 'off']) !!}
+		               {!! Form::select('consignee_district_id', $districts, null, ['class' => 'select2', 'placeholder' => 'Select District', 'id' => 'consignee_district',  'autocomplete' => 'off']) !!}
 		            </div>
 		         </div>
 
