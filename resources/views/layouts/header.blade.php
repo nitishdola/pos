@@ -2,14 +2,14 @@
 <div class="header">
 
    <div class="header-left active">
-      <a href="https://dreamspos.dreamguystech.com/html/template/index.html" class="logo logo-normal">
-         <img src="https://dreamspos.dreamguystech.com/html/template/assets/img/logo.png" alt>
+      <a href="{{ route('home') }}" class="logo logo-normal">
+         <img src="{{ asset('logo.png') }}" width="60" height="60" alt="Logo">
       </a>
       <a href="https://dreamspos.dreamguystech.com/html/template/index.html" class="logo logo-white">
-         <img src="https://dreamspos.dreamguystech.com/html/template/assets/img/logo-white.png" alt>
+      <img src="{{ asset('logo.png') }}" width="60" height="60" alt="Logo">
       </a>
       <a href="https://dreamspos.dreamguystech.com/html/template/index.html" class="logo-small">
-         <img src="https://dreamspos.dreamguystech.com/html/template/assets/img/logo-small.png" alt>
+      <img src="{{ asset('logo.png') }}" width="60" height="60" alt="Logo">
       </a>
       <a id="toggle_btn" href="javascript:void(0);">
          <i data-feather="chevrons-left" class="feather-16"></i>

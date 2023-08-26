@@ -26,7 +26,7 @@
                         <div class="login-content">
                            <div class="login-userset">
                               <div class="login-logo logo-normal">
-                                 <img src="{{ asset('auth/logo.png') }}" alt="img">
+                              <img src="{{ asset('logo.png') }}" width="100" height="100" alt="Logo">
                               </div>
                               <a href="index.html" class="login-logo logo-white">
                               <img src="{{ asset('auth/logo-white.png') }}" alt>
