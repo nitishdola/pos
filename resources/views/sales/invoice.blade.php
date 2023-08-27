@@ -23,8 +23,8 @@
 </span> <br>
                               <strong>Ayush Interior and Electrical</strong>,
                               <br/>35, Sepon Road, Nazira, Sivasagar - 785685, 
-                              <br> <i class="fas fa-phone-alt"></i> 999999999
-                              <br> <i class="fas fa-envelope"></i> xyz@gmail.com
+                              <br> <i class="fas fa-phone-alt"></i> 9395496772/8638032287
+                              <br> <i class="fas fa-envelope"></i> aayushinterior.electrical2020@gmail.com
                               <br/>GST - 18CFLPP4166E1Z5
                            </td>
                         </tr>
@@ -40,7 +40,7 @@
                            <td colspan="2">
                               Invoice Number :  {{ $sale->invoice_number}}
                               <br>
-                              Date : {{ $sale->invoice_date}}
+                              Date : {{ date('d-m-Y', strtotime($sale->invoice_date)) }}
                            </td>
                         </tr>
                      </table>
@@ -75,7 +75,7 @@
                            @endphp
                            <td>{{ $org }}</td>
                            <td>{{ $v->gst }} %</td>
-                           <td>{{ $v->sell_price * $v->quantity }}</td>
+                           <td class="text-end">{{ $v->sell_price * $v->quantity }}</td>
                            @php 
                            $total_qty += $v->quantity;
                            $total_rate_inc_tax += $v->sell_price;
@@ -90,11 +90,11 @@
                            <th> {{ number_format((float)$total_rate_inc_tax, 2, '.', '') }}</th>
                            <th> {{ number_format((float)$total_rate, 2, '.', '') }}</th>
                            <th> {{ number_format((float)($total_rate_inc_tax - $total_rate), 2, '.', '') }}</th>
-                           <th> {{ number_format((float)$total_invoice_amount, 2, '.', '') }}</th>
+                           <th class="text-end"> {{ number_format((float)$total_invoice_amount, 2, '.', '') }}</th>
                         </tr>
                         <tr>
                            <td colspan="8">
-                              <strong>Amount in words : {{ getIndianCurrency($total_invoice_amount) }}</strong>
+                              <strong>Amount in words : INR {{ getIndianCurrency($total_invoice_amount) }}</strong>
                            </td>
                         </tr>
 
@@ -167,14 +167,25 @@
    }
    }
    @media print {
-   .invoice {
-   margin-top : 90px !important;
-   border : 1px solid #000000;
+      .invoice {
+         margin-top : 90px !important;
+         border : 1px solid #000000;
+      }
+      #printableArea {
+         margin-top:100px;
+         margin:40px;
+      }
+
+      @page { margin: 0; }   body { margin: 1.6cm; }
    }
-   #printableArea {
-   margin-top:100px;
-   margin:40px;
-   }
-   }
+   @print {
+    @page :footer {
+        display: none
+    }
+  
+    @page :header {
+        display: none
+    }
+}
 </style>
 @stop

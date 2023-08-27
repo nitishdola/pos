@@ -17,6 +17,10 @@ use Validator, Redirect, Crypt, DB;
 class SalesController extends Controller
 {
 
+    public function index(Request $request) {
+        $results = Sale::where('deleted_at', NULL)->with('district', 'sale_items')->orderBy('invoice_date', 'DESC')->get();
+        return view('sales.index', compact('results'));
+    }
     public function create() {
         $items = Item::query()
             ->join('brands', 'items.brand_id', '=', 'brands.id')
@@ -40,7 +44,7 @@ class SalesController extends Controller
         $consignee_data['consignee_address']        = $request->consignee_address;
         $consignee_data['consignee_district_id']    = $request->consignee_district_id;
         $consignee_data['invoice_date']             = $request->invoice_date;
-        $consignee_data['invoice_number']           = 'AIE/0002/23-24';
+        $consignee_data['invoice_number']           = invoiceGenerate();
         $consignee_data['user_id']                  = auth()->user()->id;
 
         $validator = Validator::make($consignee_data, Sale::$rules);

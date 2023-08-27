@@ -21,8 +21,8 @@
             <li class="submenu-open">
                <h6 class="submenu-hdr">Sales</h6>
                <ul>
-                  <li><a href="#"><i data-feather="shopping-cart"></i><span>Sales</span></a></li>
-                  <li><a href="#"><i data-feather="file-text"></i><span>Invoices</span></a></li>
+                  <li><a href="{{ route('sales.create') }}"><i data-feather="shopping-cart"></i><span>Sales</span></a></li>
+                  <li><a href="{{ route('sales.index') }}"><i data-feather="file-text"></i><span>Invoices</span></a></li>
                </ul>
             </li>
             <li class="submenu-open">

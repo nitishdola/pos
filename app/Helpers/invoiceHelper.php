@@ -34,3 +34,28 @@ if(!function_exists('numberToWords')) {
         return ucwords(($Rupees ? $Rupees . 'Rupees ' : '') . $paise);
     }
 }
+
+function FY() {
+    if (date('m') <= 4) {
+        $financial_year = (date('y')-1) . '-' . date('y');
+    } else {
+        $financial_year = date('y') . '-' . (date('y') + 1);
+    }
+
+    return $financial_year;
+}
+
+function invoiceGenerate() {
+    if(DB::table('sales')->select('invoice_number')->orderBy('created_at', 'DESC')->count()) {
+        $latest_invoice_number = DB::table('sales')->select('invoice_number')->orderBy('created_at', 'DESC')->first();
+        $latest_invoice_number = $latest_invoice_number->invoice_number;
+
+        $latest_invoice_number_arr = explode('/', $latest_invoice_number);
+        $invoice_count = $latest_invoice_number_arr[1];
+        $invoice_count = $invoice_count + 1;
+        $invoice_count = sprintf("%04d", $invoice_count);
+
+        return 'AIE/'.$invoice_count.'/'.FY();
+    }
+    return 'AIE/0001/'.FY();
+}
