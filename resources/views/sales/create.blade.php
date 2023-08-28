@@ -174,6 +174,13 @@
 		}else{
          let nhtml = '';
          $latest_tr.find('.purchase_id').html(nhtml);
+
+         //alert('j')
+         $latest_tr.find('.sell_price').val(0);
+         $latest_tr.find('.unit_cost').html(0);
+         $latest_tr.find('.gst').text('');
+         $latest_tr.find('.quantity').val(0);
+         $latest_tr.find('.total_cost').text('');
       }
 	});
 
@@ -198,33 +205,43 @@
 					alert('Oops ! Something went wrong ');
 				},
 				success : function(resp) {
-					//$latest_tr.find('.mrp').text(resp.unit_cost);
-					$latest_tr.find('.gst').text(resp.gst+' %');
+					
+               if(resp.current_stock > 0) {
+                  $latest_tr.find('.gst').text(resp.gst+' %');
 
-               let ucost = 0;
-               ucost = resp.unit_cost; //console.log(ucost);
-               let display_u_cost = 0;
-               display_u_cost = ucost + ((ucost/100)*10);
+                  let ucost = 0;
+                  ucost = resp.unit_cost; //console.log(ucost);
+                  let display_u_cost = 0;
+                  display_u_cost = ucost + ((ucost/100)*10);
 
-               //add GST
-               let display_u_cost_with_gst = 0;
-               display_u_cost_with_gst = display_u_cost + ((display_u_cost/100)*resp.gst);
-
-
-					$latest_tr.find('.unit_cost').html(resp.mrp+'<br />' +display_u_cost_with_gst.toFixed(2));
-
-               //SELL COST
-               let sell_cost = 0;
-               sell_cost = ucost + ((ucost/100)*20);
-
-               //add GST
-               let sell_cost_with_gst = 0;
-               sell_cost_with_gst = sell_cost + ((sell_cost/100)*resp.gst);
+                  //add GST
+                  let display_u_cost_with_gst = 0;
+                  display_u_cost_with_gst = display_u_cost + ((display_u_cost/100)*resp.gst);
 
 
-					$latest_tr.find('.sell_price').val(sell_cost_with_gst.toFixed(2));
+                  $latest_tr.find('.unit_cost').html(resp.mrp+'<br />' +display_u_cost_with_gst.toFixed(2));
+
+                  //SELL COST
+                  let sell_cost = 0;
+                  sell_cost = ucost + ((ucost/100)*20);
+
+                  //add GST
+                  let sell_cost_with_gst = 0;
+                  sell_cost_with_gst = sell_cost + ((sell_cost/100)*resp.gst);
+
+
+                  $latest_tr.find('.sell_price').val(sell_cost_with_gst.toFixed(2));
+               }else{
+                  alert('Stok nil. Choose other invoice.');
+               }
+					
 				}
 			});
+      }else{
+         //alert('j')
+         $latest_tr.find('.sell_price').val(0);
+         $latest_tr.find('.unit_cost').html(0);
+         $latest_tr.find('.gst').text('');
       }
    });
 

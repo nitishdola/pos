@@ -16,6 +16,7 @@ class APIController extends Controller
         return DB::table('purchase_items')
                     ->join('purchases', 'purchases.id', '=', 'purchase_items.purchase_id')
                     ->where('purchase_items.item_id', $request->item_id)
+                    ->where('purchase_items.current_stock', '>', 0)
                     ->select('purchases.id', 'purchases.invoice_number', 'purchases.purchase_date', 'purchase_items.id as purchase_item_id')
                     ->get();
     }

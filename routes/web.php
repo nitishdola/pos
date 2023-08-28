@@ -29,7 +29,7 @@ Auth::routes();
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index']);
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::group(['prefix'=>'master','as'=>'master.'], function(){
+Route::group(['prefix'=>'master', 'middleware' => 'auth', 'as'=>'master.'], function(){
     Route::group(['prefix'=>'brand','as'=>'brand.'], function(){
         Route::get('/create', [BrandController::class, 'create'])->name('create');
         Route::post('/save', [BrandController::class, 'save'])->name('save');
@@ -85,14 +85,14 @@ Route::group(['prefix'=>'master','as'=>'master.'], function(){
     });
 });
 
-Route::group(['prefix'=>'purchase-order','as'=>'po.'], function(){
+Route::group(['prefix'=>'purchase-order', 'middleware' => 'auth', 'as'=>'po.'], function(){
     Route::get('/create', [PurchaseController::class, 'create'])->name('create');
     Route::post('/save', [PurchaseController::class, 'save'])->name('save');
     Route::get('/', [PurchaseController::class, 'index'])->name('index');
     Route::get('/details/{id}', [PurchaseController::class, 'details'])->name('details');
 });
 
-Route::group(['prefix'=>'sales','as'=>'sales.'], function(){
+Route::group(['prefix'=>'sales', 'middleware' => 'auth', 'as'=>'sales.'], function(){
     Route::get('/create', [SalesController::class, 'create'])->name('create');
     Route::post('/save', [SalesController::class, 'save'])->name('save');
     Route::get('/', [SalesController::class, 'index'])->name('index');

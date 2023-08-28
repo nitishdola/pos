@@ -20,7 +20,7 @@
                            <td colspan="5" class="title">
                               <span class="logo">
                                  <img src="{{ asset('logo.png') }}" width="60" height="60" />
-</span> <br>
+                              </span> <br>
                               <strong>Ayush Interior and Electrical</strong>,
                               <br/>35, Sepon Road, Nazira, Sivasagar - 785685, 
                               <br> <i class="fas fa-phone-alt"></i> 9395496772/8638032287
@@ -85,8 +85,7 @@
                         </tr>
                         @endforeach
                         <tr>
-                           <th colspan="3">Total</th>
-                           <th> {{ $total_qty }}</th>
+                           <th colspan="4">Total</th>
                            <th> {{ number_format((float)$total_rate_inc_tax, 2, '.', '') }}</th>
                            <th> {{ number_format((float)$total_rate, 2, '.', '') }}</th>
                            <th> {{ number_format((float)($total_rate_inc_tax - $total_rate), 2, '.', '') }}</th>
@@ -115,7 +114,7 @@
                               <br>
                               <br>
                               <span class="text-end">Authorised Signatory</span>
-</td>
+                           </td>
 
                            
                         </tr>
@@ -127,7 +126,7 @@
                      <p>
                            We declare that this invoice shows the actual price of the goods 
                            described and that all particulars are true and correct. 
-</p>
+                     </p>
                      <span class="text-center">This is a computer generated invoice </span>
                   </div>
                </div>
